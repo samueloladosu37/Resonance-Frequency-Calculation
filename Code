@@ -1,0 +1,41 @@
+import math
+
+def calculate_resonance_frequency(E, rho, t, r):
+    """
+    Calculate the resonance frequency of a piezoelectric transducer.
+
+    Parameters:
+    E (float): Young's modulus of the material (Pa)
+    rho (float): Density of the material (kg/m³)
+    t (float): Thickness of the membrane (m)
+    r (float): Radius of the membrane (m)
+
+    Returns:
+    float: Resonance frequency in Hz
+    """
+    # Calculate the resonance frequency using the formula
+    resonance_frequency = (1 / (2 * math.pi)) * math.sqrt(E / rho) * (t / (r ** 2))
+    return resonance_frequency
+
+def main():
+    print("Welcome to the Piezoelectric Transducer Resonance Frequency Calculator!")
+    print("Please enter the following parameters:")
+
+    try:
+        # Get user inputs
+        E = float(input("Young's modulus (E) of the material in Pa (e.g., 7.0e10 for PZT): "))
+        rho = float(input("Density (ρ) of the material in kg/m³ (e.g., 7500 for PZT): "))
+        t = float(input("Thickness (t) of the membrane in meters (e.g., 0.001 for 1 mm): "))
+        r = float(input("Radius (r) of the membrane in meters (e.g., 0.01 for 10 mm): "))
+
+        # Calculate resonance frequency
+        resonance_frequency = calculate_resonance_frequency(E, rho, t, r)
+
+        # Display the result
+        print("\n--- Results ---")
+        print(f"The resonance frequency of the piezoelectric transducer is: {resonance_frequency:.2f} Hz")
+    except ValueError:
+        print("Invalid input! Please enter numeric values.")
+
+if __name__ == "__main__":
+    main()
